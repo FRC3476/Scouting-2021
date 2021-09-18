@@ -151,7 +151,7 @@ include("navBar.php"); ?>
 										label: "Auto Upper Goal",
 										fillColor: "rgba(220,220,220,0.1)",
 										strokeColor: "purple",
-										pointColor: "rgba(220,220,220,1)",
+										pointColor: "rgba(146, 16, 222,1)",
 										pointStrokeColor: "#ffff00",
 										pointHighlightFill: "#fff",
 										pointHighlightStroke: "rgba(220,220,220,1)",
@@ -162,7 +162,7 @@ include("navBar.php"); ?>
 										label: "Teleop Upper Goal",
 										fillColor: "rgba(220,220,220,0.1)",
 										strokeColor: "green",
-										pointColor: "rgba(220,220,220,1)",
+										pointColor: "rgba(42, 187, 155, 1)",
 										pointStrokeColor: "#ffff00",
 										pointHighlightFill: "#fff",
 										pointHighlightStroke: "rgba(220,220,220,1)",
@@ -173,7 +173,7 @@ include("navBar.php"); ?>
 										label: "Upper Shot Percentage",
 										fillColor: "rgba(220,220,220,0.1)",
 										strokeColor: "blue",
-										pointColor: "rgba(220,220,220,1)",
+										pointColor: "rgba(44, 130, 201, 1)",
 										pointStrokeColor: "#ffff00",
 										pointHighlightFill: "#fff",
 										pointHighlightStroke: "rgba(220,220,220,1)",
@@ -185,7 +185,7 @@ include("navBar.php"); ?>
 										label: "Climb",
 										fillColor: "rgba(220,220,220,0.1)",
 										strokeColor: "orange",
-										pointColor: "rgba(220,220,220,1)",
+										pointColor: "rgba(245, 171, 53, 1)",
 										pointStrokeColor: "#ffff00",
 										pointHighlightFill: "#fff",
 										pointHighlightStroke: "rgba(220,220,220,1)",
@@ -196,7 +196,7 @@ include("navBar.php"); ?>
 										label: "Total Lower Goal",
 										fillColor: "rgba(220,220,220,0.1)",
 										strokeColor: "red",
-										pointColor: "rgba(220,220,220,1)",
+										pointColor: "rgba(240, 52, 52, 1)",
 										pointStrokeColor: "#ffff00",
 										pointHighlightFill: "#fff",
 										pointHighlightStroke: "rgba(220,220,220,1)",
@@ -207,7 +207,7 @@ include("navBar.php"); ?>
 										label: "Predicted Team Score Contribution",
 										fillColor: "rgba(220,220,220,0.1)",
 										strokeColor: "brown",
-										pointColor: "rgba(220,220,220,1)",
+										pointColor: "rgba(139,69,19,1)",
 										pointStrokeColor: "#ffff00",
 										pointHighlightFill: "#fff",
 										pointHighlightStroke: "rgba(220,220,220,1)",
@@ -274,6 +274,10 @@ include("navBar.php"); ?>
 									<tr class="danger">
 										<td>Three Point OPR</td>
 										<td><?php echo (getThreePointNew($teamNumber)); ?></td>
+									</tr>
+									<tr class="info">
+										<td>Inner Shot Percentage</td>
+										<td><?php echo (getThreePointNew($teamNumber)/ getUpperTotal($teamNumber)); ?></td>
 									</tr>
 
 

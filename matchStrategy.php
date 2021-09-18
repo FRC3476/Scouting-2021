@@ -41,12 +41,31 @@ include("navBar.php"); ?>
 				$teamNumber = $_GET["team"];
 				include("databaseName.php");
 				include("databaseLibrary.php");
-				//getTeamData($_GET["team"]);
 				$teamData = getTeamData($teamNumber);
 			}
+			/*
+			if ($_GET["team2"]) {
+				$teamNumber2 = $_GET["team2"];
+				include("databaseName.php");
+				include("databaseLibrary.php");
+				//getTeamData($_GET["team"]);
+				$teamData2 = getTeamData($teamNumber2);
+			}
+			
+			if ($_GET["team3"]) {
+				$teamNumber3 = $_GET["team3"];
+				include("databaseName.php");
+				include("databaseLibrary.php");
+				//getTeamData($_GET["team"]);
+				$teamData3 = getTeamData($teamNumber3);
+			}
+			*/
 			?>
 			<form action="" method="get">
 				Enter Team Number: <input class="control-label" type="number" name="team" id="team" size="10" height="10" width="40">
+				<!--Enter Team 2 Number: <input class="control-label" type="number" name="team2" id="team2" size="10" height="10" width="40">
+				Enter Team 3 Number: <input class="control-label" type="number" name="team3" id="team3" size="10" height="10" width="40"> -->
+
 				<button id="submit" class="btn btn-primary" onclick="">Display</button>
 				<div class="row">
                 <div class="col-md-5">
@@ -251,6 +270,9 @@ include("navBar.php"); ?>
                                 var matchToPoints4 = [];
                                 var matchToPoints5 = [];
 								var matchToPoints6 = [];
+								var matchToPoints7 = [];
+                                var matchToPoints8 = [];
+								var matchToPoints9 = [];
 								<?php
 								if ($teamData[10] != null){
 									for ($i = 0; $i != sizeof($teamData[10]); $i++) {
@@ -264,6 +286,15 @@ include("navBar.php"); ?>
 									}
 									for ($i = 0; $i != sizeof($teamData[9]); $i++) {
 										echo ("matchToPoints5[" . $teamData[9][$i][2] . "] = " . $teamData[9][$i][6] . ";");
+									}
+									for ($i = 0; $i != sizeof($teamData[9]); $i++) {
+										echo ("matchToPoints7[" . $teamData[9][$i][2] . "] = " . $teamData[9][$i][8] . ";");
+									}
+									for ($i = 0; $i != sizeof($teamData[9]); $i++) {
+										echo ("matchToPoints8[" . $teamData[9][$i][2] . "] = " . $teamData[9][$i][9] . ";");
+									}
+									for ($i = 0; $i != sizeof($teamData[9]); $i++) {
+										echo ("matchToPoints9[" . $teamData[9][$i][2] . "] = " . $teamData[9][$i][10] . ";");
 									}
 								} else{
 									for ($i = 0; $i != sizeof($teamData[8]); $i++) {
@@ -454,11 +485,7 @@ include("navBar.php"); ?>
 											context2.fillStyle = "#059400";
 											context2.fillRect((a[i][0]), (a[i][1]), 5, 5);
 											console.log(b[i][1]);
-										}else if(((b[i][1]/(b[i][2]+b[i][1])) >= 0.9)){
-											context2.fillStyle = "#00ff0d";
-											context2.fillRect((a[i][0]), (a[i][1]), 5, 5);
-											console.log(b[i][1]);
-										} else if (((b[i][1]/(b[i][2]+b[i][1])) >= 0.7)){
+										}else if (((b[i][1]/(b[i][2]+b[i][1])) >= 0.7)){
 											context2.fillStyle = "#d0ff00";
 											context2.fillRect((a[i][0]), (a[i][1]), 5, 5);
 										} else if (((b[i][1]/(b[i][2]+b[i][1])) >= 0.5)){
@@ -490,9 +517,6 @@ include("navBar.php"); ?>
 												if (((b[i][1]/(b[i][2]+b[i][1])) == 1)){
 													context2.fillStyle = "#059400";
 													context2.fillRect((a[i][0]), (a[i][1]), 5, 5);
-												} else if (((b[i][1]/(b[i][2]+b[i][1])) >= 0.9)){
-													context2.fillStyle = "#00ff0d";
-													context2.fillRect((a[i][0]), (a[i][1]), 5, 5);
 												} else if (((b[i][1]/(b[i][2]+b[i][1])) >= 0.7)){
 													context2.fillStyle = "#d0ff00";
 													context2.fillRect((a[i][0]), (a[i][1]), 5, 5);
@@ -520,26 +544,56 @@ include("navBar.php"); ?>
 									}
 								}
 
+								function printTeleop() {
+                                    var matchNumber = document.getElementById("matchNum").value;
+                                    var b = matchToPoints7[matchNumber];
+                                    var c = matchToPoints8[matchNumber];
+									var d = matchToPoints9[matchNumber];
+									if (b != null){
+										console.log("Teleop Upper Made: " + b + ", Teleop Upper Miss: " + c + ", Teleop Lower Goal: " + d);
+										document.getElementById('teleop').innerHTML = "Teleop Upper Made: " + b;
+										document.getElementById('teleop2').innerHTML = "Teleop Upper Miss: " + c;
+										document.getElementById('teleop3').innerHTML = "Teleop Lower Made: " + d;
+									}
+                                }
+
+                                function printTeleop1() {
+									document.getElementById('teleop').innerHTML = "";
+									document.getElementById('teleop2').innerHTML = "";
+									document.getElementById('teleop3').innerHTML = "";
+                                }
+
 							</script>
                             
 							<h4><b>Match Number -</b></h4>
 							</div>
 								<div class="col-md-7">
-									<select onclick="drawPoint2()" id="matchNum2" class="form-control">
+									<select onclick="drawPoint2(); printTeleop();" id="matchNum2" class="form-control">
 										<?php for ($i = 0; $i != sizeof($teamData[10]); $i++) {
 											echo ("<option value='" . $teamData[10][$i][2] . "'>" . $teamData[10][$i][2] . "</option>");
 										} ?>
 									</select>
 								</div>
 								<div class="col-md-5">
-									<button type="button" onClick="drawPoint3()" class=" btn btn-material-orange" id="bigFont"><a id="lowerGoalTemp" class="enlargedtext"></a> Show All </button>
+									<div>
+										<button type="button" onClick="drawPoint3(); printTeleop1();" class=" btn btn-material-orange" id="bigFont"><a id="lowerGoalTemp" class="enlargedtext"></a> Show All </button>
+									</div>
+									<div>
+										<span id='teleop'></span>
+									</div>
+									<div>
+										<span id='teleop2'></span>
+									</div>
+									<div>
+										<span id='teleop3'></span>
+									</div>
 								</div>
 							</div>
+							
 
 							<div>
 
 								<button type="button" onClick="" class="enlargedtext stylishLower8" id="bigFont"><a id="lowerGoalTemp" class="enlargedtext"></a> 100 Percent </button>
-								<button type="button" onClick="" class="enlargedtext stylishLower1" id="bigFont"><a id="lowerGoalTemp" class="enlargedtext"></a> 90 Percent </button>
 								<button type="button" onClick="" class="enlargedtext stylishLower2" id="bigFont"><a id="lowerGoalTemp" class="enlargedtext"></a> 70 Percent </button>
 								<button type="button" onClick="" class="enlargedtext stylishLower3" id="bigFont"><a id="lowerGoalTemp" class="enlargedtext"></a> 50 Percent </button>
 								<button type="button" onClick="" class="enlargedtext stylishLower4" id="bigFont"><a id="lowerGoalTemp" class="enlargedtext"></a> 30 Percent </button>
@@ -548,6 +602,8 @@ include("navBar.php"); ?>
 								<button type="button" onClick="" class="enlargedtext stylishLower7" id="bigFont"><a id="lowerGoalTemp" class="enlargedtext"></a> Lower Only </button>
 							</div>
 						</div>
+
+						<h4><b>Team Info</b></h4>
 
 						<div class="table-responsive" style="height:800px; margin:20 auto;">
 							<table class="table">
@@ -561,33 +617,65 @@ include("navBar.php"); ?>
 										<td><?php echo (getThreePointNew($teamNumber)); ?></td>
 									</tr>
 									<tr class="success">
-										<td>Match Strategy Comments</td>
-										<td><?php $mc = matchComments($teamNumber);
-											for ($i = 0; $i != sizeof($mc); $i++) {
-												echo ("$mc[$i].") . PHP_EOL;
-											} ?></td>
+										<td>Inner Shot Percentage</td>
+										<td><?php echo (getThreePointNew($teamNumber)/ getUpperTotal($teamNumber)); ?></td>
+									</tr>
+									<tr class="info">
+										<td>Average Predicted Score</td>
+										<td><?php echo (getAvgScore($teamNumber)); ?></td>
+									</tr>
+									<tr class="danger">
+										<td>Average Cycle Count</td>
+										<td><?php echo (getAvgCycleCount($teamNumber)); ?></td>
+									</tr>
+									<tr class="success">
+										<td>Side Climb Capability?</td>
+										<td><?php echo (getSideClimbAbility($teamNumber)); ?></td>
+									</tr>
+									<tr class="info">
+										<td>Center Climb Capability?</td>
+										<td><?php echo (getCenterClimbAbility($teamNumber)); ?></td>
+									</tr>
+									<tr class="danger">
+										<td>Auto Capability?</td>
+										<td><?php echo (getAuto($teamNumber)); ?></td>
+									</tr>
+									<tr class="success">
+										<td>Control Panel Position Capability?</td>
+										<td><?php echo (getControlPanelPosition($teamNumber)); ?></td>
+									</tr>
+									<tr class="info">
+										<td>Control Panel Number Capability?</td>
+										<td><?php echo (getControlPanelNumber($teamNumber)); ?></td>
 									</tr>
 
-									<tr class="info">
+									<tr class="danger">
 										<td>Average Penalties</td>
 										<td><?php echo (getAvgPenalties($teamNumber)); ?></td>
 									</tr>
 
-									<tr class="danger">
+									<tr class="success">
 										<td>Avg Drive Ranking</td>
 										<td><?php echo (getAvgDriveRank($teamNumber)); ?></td>
 									</tr>
 
-									<tr class="success">
+									<tr class="info">
 										<td>Total Defense</td>
 										<td><?php echo (getTotalDefense($teamNumber)); ?></td>
 									</tr>
 									
-									<tr class="info">
+									<tr class="danger">
 										<td>Defense Comments</td>
 										<td><?php $dc = defenseComments($teamNumber);
 											for ($i = 0; $i != sizeof($dc); $i++) {
 												echo ("$dc[$i].") . PHP_EOL;
+											} ?></td>
+									</tr>
+									<tr class="success">
+										<td>Match Strategy Comments</td>
+										<td><?php $mc = matchComments($teamNumber);
+											for ($i = 0; $i != sizeof($mc); $i++) {
+												echo ("$mc[$i].") . PHP_EOL;
 											} ?></td>
 									</tr>
 

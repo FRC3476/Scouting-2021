@@ -40,7 +40,7 @@
 				<li><a href="teamRanking.php" style="color:Black;">Ranking</a></li>
 				<li><a href="matchStrategy.php" style="color:Black;">Strategy</a></li>
 				<li><a href="dataValidation.php" style="color:Black;">Validate</a></li>
-				<!--   <li><a href="scoreEstimate.php" style="color:Black;">Score Est</a></li>  >-->
+				<li><a href="allianceInfo.php" style="color:Black;">Alliance Est</a></li>
 				<!--<li><a href="teamFilter.php" style="color:Black;">Team Filter</a></li>-->
 
 			</ul>

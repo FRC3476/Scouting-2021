@@ -17,6 +17,8 @@ include("header.php") ?>
 					<th>Avg Upper Shot Percentage</th>
 					<th>OPR</th>
 					<th>Three Point OPR</th>
+					<th>Upper Goal OPR</th>
+					<th>Inner Shot Percentage</th>
 					<th>Avg Drive Rank</th>
 					<th>Avg Offense Score</th>
 					<th>Avg Defense Score</th>
@@ -47,6 +49,8 @@ include("header.php") ?>
 					$UpperShotPercentage = getAvgUpperShotPercentage($teamNumber);
 					$OPR = getOPR($teamNumber);
 					$threePoint = getThreePointNew($teamNumber);
+					$upperGoal = getUpperTotal($teamNumber);
+					$shotPercentage = round($threePoint/$upperGoal, 2); 
 					$avgDriveRank = getAvgDriveRank($teamNumber);
 					$avgOffenseRank = getAvgOffenseRank($teamNumber);
 					$avgDefenseRank = getAvgDefenseRank($teamNumber);
@@ -77,6 +81,8 @@ include("header.php") ?>
 					<th>" . $UpperShotPercentage . "</th>
 					<th>" . $OPR . "</th>
 					<th>" . $threePoint . "</th>
+					<th>" . $upperGoal . "</th>
+					<th>" . $shotPercentage . "</th>
 					<th>" . $avgDriveRank . "</th>
 					<th>" . $avgOffenseRank . "</th>
 					<th>" . $avgDefenseRank . "</th>

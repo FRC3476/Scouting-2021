@@ -1242,6 +1242,63 @@ function getTotalClimb($teamNumber)
 	return ($climbCount);
 }
 
+function getTotalAuto($teamNumber)
+{
+	$teamData = getTeamData($teamNumber);
+	$auto = 0;
+	for ($i = 0; $i != sizeof($teamData[8]); $i++) {
+		$auto = $auto + $teamData[8][$i][6];
+
+	}
+	if ($teamData[8] == null){
+		$auto = 0;
+		for ($i = 0; $i != sizeof($teamData[9]); $i++) {
+			$auto += $teamData[10][$i][6];
+		}
+	}
+	return ($auto);
+}
+
+function getAuto($teamNumber)
+{
+	$auto = getTotalAuto($teamNumber);
+	if ($auto == 0){
+		return "No";
+	} else{
+		return "Yes";
+	}
+}
+
+function getSideClimbAbility($teamNumber)
+{
+	$climbCount = getTotalClimbSide($teamNumber);
+	if ($climbCount == 0){
+		return "No";
+	} else{
+		return "Yes";
+	}
+}
+
+function getCenterClimbAbility($teamNumber)
+{
+	$climbCount = getTotalClimbCenter($teamNumber);
+	if ($climbCount == 0){
+		return "No";
+	} else{
+		return "Yes";
+	}
+}
+
+function getClimbAbility($teamNumber)
+{
+	$climbCount = getTotalClimbCenter($teamNumber) + getTotalClimbSide($teamNumber);
+	if ($climbCount == 0){
+		return "No";
+	} else{
+		return "Yes";
+	}
+}
+
 function getTotalUpperGoal($teamNumber)
 {
 	$teamData = getTeamData($teamNumber);
@@ -1614,6 +1671,33 @@ function getTotalControlPosition($teamNumber)
 	return ($positionCount);
 }
 
+function getControlPanelPosition($teamNumber)
+{
+	$teamData = getTeamData($teamNumber);
+	$positionCount = getTotalControlPosition($teamNumber);
+
+	if ($positionCount == 0){
+		return "No";
+	} else{
+		return "Yes";
+	}
+	
+}
+
+function getControlPanelNumber($teamNumber)
+{
+	$teamData = getTeamData($teamNumber);
+	$rotationCount  = getTotalControlNumber($teamNumber);
+
+	if ($rotationCount == 0){
+		return "No";
+	} else{
+		return "Yes";
+	}
+	
+}
+
+
 function getAvgCycleCount($teamNumber)
 {
 	$teamData = getTeamData($teamNumber);
@@ -1712,8 +1796,7 @@ function getCorrectData($match, $alliance, $detail)
 
 function getThreePointNew($teamNumber)
 {
-	chdir("js");
-	chdir("frcstrat");
+	//chdir("js");
 	$command = escapeshellcmd('python3 threecalcufinal.py');
 	$output = shell_exec($command);
 
@@ -1732,10 +1815,30 @@ function getThreePointNew($teamNumber)
 	}
 }
 
-function getOPR($teamNumber)
+function getUpperTotal($teamNumber)
 {
 	//chdir("js");
-	//chdir("frcstrat");
+	$command = escapeshellcmd('python3 uppercalcufinal.py');
+	$output = shell_exec($command);
+
+	$csvFile = file('upperOPR.txt');
+    $data = array();
+    foreach ($csvFile as $line) {
+        $data[] = str_getcsv($line);
+    }
+
+	for($x = 0; $x < sizeof($data); $x++){
+		$word = $data[$x][0];
+		$word = substr($word, 3);
+		if ($word == $teamNumber){
+			return round($data[$x][1],2);
+		}
+	}
+}
+
+function getOPR($teamNumber)
+{
+	chdir("js");
 	$command = escapeshellcmd('python3 oprcalcufinal.py');
 	$output = shell_exec($command);
 

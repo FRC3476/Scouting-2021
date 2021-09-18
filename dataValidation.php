@@ -31,6 +31,7 @@ include("header.php")?>
          $totalredAutoLower = 0;
          $totalredTeleopLower = 0;
          $climbred = 0;
+         $match = "2020cala_qm" .$_GET["match"];
 
         echo('<div><table  class="table table-hover" id="RawData" border="1"></div>');
         foreach ($result as $row_key => $row){
@@ -51,7 +52,21 @@ include("header.php")?>
                                               $value= '<a href="matchData.php?match='.$value.'">'.$value.'</a>';
                                                 echo("<td align='center'>".$value."</td>");
                                         }else if($key != "cycleNumber" && ($key != "autoPath") && ($key != "teleopPath")){
-                                            echo("<td align='center'>".$value."</td>");
+                                            if ($key == "upperGoal"){
+                                                $abc = getCorrectData($match, "blue", "autoCellsUpper");
+                                                echo("<td align='center'>".$value. " - " .$abc."</td>");
+                                            } else if ($key == "upperGoalT"){
+                                                $abc1 = getCorrectData($match, "blue", "teleopCellsUpper");
+                                                echo("<td align='center'>".$value. " - " .$abc1."</td>");
+                                            } else if($key == "lowerGoal"){
+                                                $abc2 = getCorrectData($match, "blue", "autoCellsBottom");
+                                                echo("<td align='center'>".$value. " - " .$abc2."</td>");
+                                            } else if($key == "lowerGoalT"){
+                                                $abc3 = getCorrectData($match, "blue", "teleopCellsBottom");
+                                                echo("<td align='center'>".$value. " - " .$abc3."</td>");
+                                            } else{
+                                                echo("<td align='center'>".$value."</td>");
+                                            }
                                          }
                                         if (($key == "upperGoal")){
                                             $totalAutoUpper += $value;
@@ -81,7 +96,21 @@ include("header.php")?>
                                      $value= '<a href="matchData.php?match='.$value.'">'.$value.'</a>';
                                        echo("<td align='center'>".$value."</td>");
                                }else if($key != "cycleNumber" && ($key != "autoPath") && ($key != "teleopPath")){
-                                   echo("<td align='center'>".$value."</td>");
+                                    if ($key == "upperGoal"){
+                                        $abc = getCorrectData($match, "red", "autoCellsUpper");
+                                        echo("<td align='center'>".$value. " - " .$abc."</td>");
+                                    } else if ($key == "upperGoalT"){
+                                        $abc1 = getCorrectData($match, "red", "teleopCellsUpper");
+                                        echo("<td align='center'>".$value. " - " .$abc1."</td>");
+                                    } else if($key == "lowerGoal"){
+                                        $abc2 = getCorrectData($match, "red", "autoCellsBottom");
+                                        echo("<td align='center'>".$value. " - " .$abc2."</td>");
+                                    } else if($key == "lowerGoalT"){
+                                        $abc3 = getCorrectData($match, "red", "teleopCellsBottom");
+                                        echo("<td align='center'>".$value. " - " .$abc3."</td>");
+                                    } else{
+                                        echo("<td align='center'>".$value."</td>");
+                                    }
                                 }
                                if (($key == "upperGoal")){
                                    $totalredAutoUpper += $value;
@@ -123,6 +152,7 @@ include("header.php")?>
                  $totalredAutoLower = 0;
                  $totalredTeleopLower = 0;
                  $climbred = 0;
+                 $match = "2020cala_qm" .$_GET["match"];
             echo('<div><table  class="table table-hover" id="RawData" border="1"></div>');
             foreach ($result as $row_key => $row){
                     if($i==0){
@@ -141,8 +171,22 @@ include("header.php")?>
                                          if($key == "matchNum"){
                                               $value= '<a href="matchData.php?match='.$value.'">'.$value.'</a>';
                                                 echo("<td align='center'>".$value."</td>");
-                                        }else if($key != "cycleNumber" && ($key != "autoPath") && ($key != "teleopPath")){
-                                            echo("<td align='center'>".$value."</td>");
+                                        }else if($key != "cycleNumber" && ($key != "autoPath") && ($key != "teleopPath")){    
+                                            if ($key == "upperGoal"){
+                                                $abc = getCorrectData($match, "blue", "autoCellsUpper");
+                                                echo("<td align='center'>".$value. " - " .$abc."</td>");
+                                            } else if ($key == "upperGoalT"){
+                                                $abc1 = getCorrectData($match, "blue", "teleopCellsUpper");
+                                                echo("<td align='center'>".$value. " - " .$abc1."</td>");
+                                            } else if($key == "lowerGoal"){
+                                                $abc2 = getCorrectData($match, "blue", "autoCellsBottom");
+                                                echo("<td align='center'>".$value. " - " .$abc2."</td>");
+                                            } else if($key == "lowerGoalT"){
+                                                $abc3 = getCorrectData($match, "blue", "teleopCellsBottom");
+                                                echo("<td align='center'>".$value. " - " .$abc3."</td>");
+                                            } else{
+                                                echo("<td align='center'>".$value."</td>");
+                                            }
                                          }
                                         if (($key == "upperGoal")){
                                             $totalAutoUpper += $value;
@@ -172,7 +216,21 @@ include("header.php")?>
                                      $value= '<a href="matchData.php?match='.$value.'">'.$value.'</a>';
                                        echo("<td align='center'>".$value."</td>");
                                }else if($key != "cycleNumber" && ($key != "autoPath") && ($key != "teleopPath")){
-                                   echo("<td align='center'>".$value."</td>");
+                                    if ($key == "upperGoal"){
+                                        $abc = getCorrectData($match, "red", "autoCellsUpper");
+                                        echo("<td align='center'>".$value. " - " .$abc."</td>");
+                                    } else if ($key == "upperGoalT"){
+                                        $abc1 = getCorrectData($match, "red", "teleopCellsUpper");
+                                        echo("<td align='center'>".$value. " - " .$abc1."</td>");
+                                    } else if($key == "lowerGoal"){
+                                        $abc2 = getCorrectData($match, "red", "autoCellsBottom");
+                                        echo("<td align='center'>".$value. " - " .$abc2."</td>");
+                                    } else if($key == "lowerGoalT"){
+                                        $abc3 = getCorrectData($match, "red", "teleopCellsBottom");
+                                        echo("<td align='center'>".$value. " - " .$abc3."</td>");
+                                    } else{
+                                        echo("<td align='center'>".$value."</td>");
+                                    }
                                 }
                                if (($key == "upperGoal")){
                                    $totalredAutoUpper += $value;
@@ -201,52 +259,52 @@ include("header.php")?>
                  echo("</table>");
                 }
 
-                  $match = "2020caln_qm" .$_GET["match"];
+                  $match = "2020cala_qm" .$_GET["match"];
 
                   if (getCorrectData($match, "red", "teleopCellsUpper") == $totalredTeleopUpper){
 
                 }else{
-                    echo "total red Teleop Upper is incorrect";
+                    echo "total red Teleop Upper is incorrect ";
                 }
                   if (getCorrectData($match, "red", "autoCellsUpper") == $totalredAutoUpper){
                
                 }else{
-                    echo "total red Auto Upper is incorrect";
+                    echo "total red Auto Upper is incorrect ";
                 }
                   if (getCorrectData($match, "red", "autoCellsBottom") == $totalredAutoLower){
     
                 }else{
-                    echo "total red Auto Lower is incorrect";
+                    echo "total red Auto Lower is incorrect ";
                 }
                   if (getCorrectData($match, "red", "teleopCellsBottom") == $totalredTeleopLower){
         
                 }else{
-                    echo "total red Teleop Lower is incorrect";
+                    echo "total red Teleop Lower is incorrect ";
                 }
 
                   if (getCorrectData($match, "blue", "teleopCellsUpper") == $totalTeleopUpper){
     
                 }else{
-                    echo "total blue Teleop Upper is incorrect";
+                    echo "total blue Teleop Upper is incorrect ";
                 }
                 if (getCorrectData($match, "blue", "autoCellsUpper") == $totalAutoUpper){
 
                 }else{
-                    echo "total blue Auto Upper is incorrect";
+                    echo "total blue Auto Upper is incorrect ";
                 }
                 if (getCorrectData($match, "blue", "autoCellsBottom") == $totalAutoLower){
             
                 }else{
-                    echo "total blue Auto Lower is incorrect";
+                    echo "total blue Auto Lower is incorrect ";
                 }
                 if (getCorrectData($match, "blue", "teleopCellsBottom") == $totalTeleopLower){
               
                 }else{
-                    echo "total blue Teleop Lower is incorrect";
+                    echo "total blue Teleop Lower is incorrect ";
                 }
 
-                $blueClimbCheck;
-                $redClimbCheck;
+                $blueClimbCheck = 0;
+                $redClimbCheck = 0;
 
                 if (getCorrectData($match, "blue", "endgameRobot1") == "Hang"){
                     $blueClimbCheck += 1;
@@ -267,10 +325,10 @@ include("header.php")?>
                     $redClimbCheck += 1;
                 }
                 if ($redClimbCheck != $climbred){
-                    echo "red climb incorrect";
+                    echo "red climb incorrect ";
                 }
                 if ($blueClimbCheck != $climb){
-                    echo "blue climb incorrect";
+                    echo "blue climb incorrect ";
                 }
                  
 
