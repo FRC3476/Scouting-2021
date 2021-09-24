@@ -267,18 +267,6 @@ include("navBar.php"); ?>
 										<td>Average Cycle Count</td>
 										<td><?php echo (getAvgCycleCount($teamNumber)); ?></td>
 									</tr>
-									<tr class="success">
-										<td>OPR</td>
-										<td><?php echo (getOPR($teamNumber)); ?></td>
-									</tr>
-									<tr class="danger">
-										<td>Three Point OPR</td>
-										<td><?php echo (getThreePointNew($teamNumber)); ?></td>
-									</tr>
-									<tr class="info">
-										<td>Inner Shot Percentage</td>
-										<td><?php echo (getThreePointNew($teamNumber)/ getUpperTotal($teamNumber)); ?></td>
-									</tr>
 
 
 

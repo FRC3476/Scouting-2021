@@ -300,6 +300,24 @@ include("navBar.php"); ?>
 									for ($i = 0; $i != sizeof($teamData[8]); $i++) {
 										echo ("matchToPoints[" . $teamData[8][$i][2] . "] = " . $teamData[8][$i][5] . ";");
 									}
+									for ($i = 0; $i != sizeof($teamData[8]); $i++) {
+										echo ("matchToPoints4[" . $teamData[8][$i][2] . "] = " . $teamData[8][$i][7] . ";");
+									}
+									for ($i = 0; $i != sizeof($teamData[8]); $i++) {
+										echo ("matchToPoints6[" . $teamData[8][$i][2] . "] = " . $teamData[8][$i][9] . ";");
+									}
+									for ($i = 0; $i != sizeof($teamData[8]); $i++) {
+										echo ("matchToPoints5[" . $teamData[8][$i][2] . "] = " . $teamData[8][$i][8] . ";");
+									}
+									for ($i = 0; $i != sizeof($teamData[8]); $i++) {
+										echo ("matchToPoints7[" . $teamData[8][$i][2] . "] = " . $teamData[8][$i][11] . ";");
+									}
+									for ($i = 0; $i != sizeof($teamData[8]); $i++) {
+										echo ("matchToPoints8[" . $teamData[8][$i][2] . "] = " . $teamData[8][$i][12] . ";");
+									}
+									for ($i = 0; $i != sizeof($teamData[8]); $i++) {
+										echo ("matchToPoints9[" . $teamData[8][$i][2] . "] = " . $teamData[8][$i][13] . ";");
+									}
 								}
 								?>
 								imageObj.onload = function() {
@@ -439,11 +457,14 @@ include("navBar.php"); ?>
 								var matchToPoints3 = [];
                                 var dataList = [];
 								<?php
-								for ($i = 0; $i != sizeof($teamData[10]); $i++) {
-									echo ("matchToPoints2[" . $teamData[10][$i][2] . "] = " . $teamData[10][$i][7] . ";");
-								}
-								for ($i = 0; $i != sizeof($teamData[9]); $i++) {
-									echo ("matchToPoints3[" . $teamData[9][$i][2] . "] = " . $teamData[9][$i][14] . ";");
+								if ($teamData[10] != null){
+
+									for ($i = 0; $i != sizeof($teamData[10]); $i++) {
+										echo ("matchToPoints2[" . $teamData[10][$i][2] . "] = " . $teamData[10][$i][7] . ";");
+									}
+									for ($i = 0; $i != sizeof($teamData[9]); $i++) {
+										echo ("matchToPoints3[" . $teamData[9][$i][2] . "] = " . $teamData[9][$i][14] . ";");
+									}
 								}
 								?>
 								<?php
@@ -608,18 +629,6 @@ include("navBar.php"); ?>
 						<div class="table-responsive" style="height:800px; margin:20 auto;">
 							<table class="table">
 								<tbody>
-									<tr class="info">
-										<td>OPR</td>
-										<td><?php echo (getOPR($teamNumber)); ?></td>
-									</tr>
-									<tr class="danger">
-										<td>Three Point OPR</td>
-										<td><?php echo (getThreePointNew($teamNumber)); ?></td>
-									</tr>
-									<tr class="success">
-										<td>Inner Shot Percentage</td>
-										<td><?php echo (getThreePointNew($teamNumber)/ getUpperTotal($teamNumber)); ?></td>
-									</tr>
 									<tr class="info">
 										<td>Average Predicted Score</td>
 										<td><?php echo (getAvgScore($teamNumber)); ?></td>

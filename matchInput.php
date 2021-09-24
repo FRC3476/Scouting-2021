@@ -254,6 +254,11 @@ include("navBar.php");
 
 					}
 
+					function check(){
+						cycleCount = cycleCount.substring(0, cycleCount.length -2);
+						cycleCount += ("]");
+					}
+
 					function okButton() {
 						lowerGoalT += lowerGoalTemp;
 						upperGoalT += upperGoalTemp;
@@ -264,6 +269,11 @@ include("navBar.php");
 							cycleNumber = cycleNumber;
 						} else {
 							cycleNumber += 1;
+							cycleCount += ("["+cycleNumber + ", " + upperGoalTemp + ", " + upperGoalMissTemp + ", " + lowerGoalTemp + "], ");
+							lowerMissTemp = lowerGoalMissTemp;
+						
+							console.log(cycleCount);
+							console.log(cycleNumber);
 						}
 
 						lowerGoalTemp = 0;
@@ -275,6 +285,35 @@ include("navBar.php");
 						document.getElementById("lowerGoalMissTemp").innerHTML = lowerGoalMissTemp;
 						document.getElementById("upperGoalTemp").innerHTML = upperGoalTemp;
 						document.getElementById("upperGoalMissTemp").innerHTML = upperGoalMissTemp;
+
+					}
+
+					function undoSave() {
+						
+						if (cycleNumber == 0){
+							console.log("continue");
+						}else{
+							console.log((cycleCount.substring(cycleCount.length -4, cycleCount.length -3)));
+							cycleNumber -= 1;
+							lowerGoalTemp = parseInt(cycleCount.substring(cycleCount.length -4, cycleCount.length -3));
+							upperGoalTemp = parseInt(cycleCount.substring(cycleCount.length -10, cycleCount.length -9));
+							upperGoalMissTemp = parseInt(cycleCount.substring(cycleCount.length -7, cycleCount.length -6));
+							lowerGoalMissTemp = lowerMissTemp;
+
+							lowerGoalT -= lowerGoalTemp;
+							upperGoalT -= upperGoalTemp;
+							upperGoalMissT -= upperGoalMissTemp;
+							
+							console.log(cycleCount);
+							console.log(cycleNumber);
+						}
+						
+						cycleCount = cycleCount.substring(0, cycleCount.length -14);
+
+						document.getElementById("lowerGoalTemp").innerHTML = lowerGoalTemp;
+						document.getElementById("upperGoalTemp").innerHTML = upperGoalTemp;
+						document.getElementById("upperGoalMissTemp").innerHTML = upperGoalMissTemp;	
+						document.getElementById("lowerGoalMissTemp").innerHTML = lowerGoalMissTemp;					
 
 					}
 
@@ -325,6 +364,8 @@ include("navBar.php");
 					var lowerGoalT = 0;
 					var lowerGoalMissT = 0;
 					var cycleNumber = 0;
+					var cycleCount = document.getElementById("[");;
+					cycleCount = "[";
 				</script>
 
 				<a>
@@ -348,6 +389,7 @@ include("navBar.php");
 				<br>
 
 				<button type="button" onClick="okButton()" class="btn btn-primary" id="bigFont"> Save Cycle <a class="enlargedtext"></a></button>
+				<button type="button" onClick="undoSave()" class="btn btn-primary" id="bigFont"> Edit Last Save <a class="enlargedtext"></a></button>
 
 				<div class="togglebutton" id="reach">
 					<h4><b>Control Panel Rotation Control</b></h4>
@@ -415,7 +457,7 @@ include("navBar.php");
 
 				<br> <br>
 				<div style="padding: 5px; padding-bottom: 10;">
-					<input type="button" value="Submit Data" id="submitButton" class="btn btn-primary" onclick="okButton(''); postwith('')" />
+					<input type="button" value="Submit Data" id="submitButton" class="btn btn-primary" onclick="okButton(''); check(); postwith('')" />
 
 
 				</div>

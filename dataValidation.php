@@ -51,7 +51,7 @@ include("header.php")?>
                                          if($key == "matchNum"){
                                               $value= '<a href="matchData.php?match='.$value.'">'.$value.'</a>';
                                                 echo("<td align='center'>".$value."</td>");
-                                        }else if($key != "cycleNumber" && ($key != "autoPath") && ($key != "teleopPath")){
+                                        }else if($key !=  "autoPath" && $key != "teleopPath"){
                                             if ($key == "upperGoal"){
                                                 $abc = getCorrectData($match, "blue", "autoCellsUpper");
                                                 echo("<td align='center'>".$value. " - " .$abc."</td>");
@@ -95,7 +95,7 @@ include("header.php")?>
                                 if($key == "matchNum"){
                                      $value= '<a href="matchData.php?match='.$value.'">'.$value.'</a>';
                                        echo("<td align='center'>".$value."</td>");
-                               }else if($key != "cycleNumber" && ($key != "autoPath") && ($key != "teleopPath")){
+                               }else if($key !=  "autoPath" && $key != "teleopPath"){
                                     if ($key == "upperGoal"){
                                         $abc = getCorrectData($match, "red", "autoCellsUpper");
                                         echo("<td align='center'>".$value. " - " .$abc."</td>");
