@@ -1796,7 +1796,6 @@ function getCorrectData($match, $alliance, $detail)
 
 function getThreePointNew($teamNumber)
 {
-	//chdir("js");
 	$command = escapeshellcmd('python3 threecalcufinal.py');
 	$output = shell_exec($command);
 
@@ -1817,7 +1816,6 @@ function getThreePointNew($teamNumber)
 
 function getUpperTotal($teamNumber)
 {
-	//chdir("js");
 	$command = escapeshellcmd('python3 uppercalcufinal.py');
 	$output = shell_exec($command);
 
@@ -1838,7 +1836,6 @@ function getUpperTotal($teamNumber)
 
 function getOPR($teamNumber)
 {
-	chdir("js");
 	$command = escapeshellcmd('python3 oprcalcufinal.py');
 	$output = shell_exec($command);
 

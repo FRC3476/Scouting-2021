@@ -26,8 +26,6 @@
 					<a  class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="color:Black;" >Forms<b class="caret"></b></a>
 	                    <ul class="dropdown-menu">-->
 				<li><a href="matchInput.php" style="color:Black;">Match Form</a></li>
-				<li><a href="primaryMatchInput.php" style="color:Black;">Primary Match Form</a></li>
-				<li><a href="secondaryMatchInput.php" style="color:Black;">Secondary Match Form</a></li>
 				<li><a href="leadScoutInput.php" style="color:Black;">LS Input</a></li>
 				<li><a href="pitInput.php" style="color:Black;">PS Form</a></li>
 				<li><a href="pictureUpload.php" style="color:Black;">Picture Upload</a></li>

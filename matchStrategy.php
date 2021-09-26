@@ -365,9 +365,49 @@ include("navBar.php"); ?>
 
 								function drawPointLines3() {
 									makeCanvasReady();
+									var k = 0;
 									for (var j = 0; j != 200; j++){
 										var a = matchToPoints[j];
-										var color = "#FFFFFF";
+										
+										if (k==1){
+											var color = "#512E5F";
+										}
+										if (k==2){
+											var color = "#AF7AC5";
+										}
+										if (k==3){
+											var color = "#154360";
+										}
+										if (k==4){
+											var color = "#3498DB";
+										}
+										if (k==5){
+											var color = "#0E6251";
+										}
+										if (k==6){
+											var color = "#1ABC9C";
+										}
+										if (k==7){
+											var color = "#7D6608";
+										}
+										if (k==8){
+											var color = "#F1C40F";
+										}
+										if (k==9){
+											var color = "#F39C12";
+										}
+										if (k==10){
+											var color = "#D35400";
+										}
+										if (k==11){
+											var color = "#CACFD2";
+										}
+										if (k==12){
+											var color = "#99A3A4";
+										}
+										if (k == 13){
+											var color = "#E74C3C";
+										}
 										context.beginPath();
 										context.strokeStyle = color;
 										if (a != null){
@@ -379,6 +419,7 @@ include("navBar.php"); ?>
 												}
 											}
 											context.stroke();
+											k++;
 										}else{
 											console.log("fail");
 										}
