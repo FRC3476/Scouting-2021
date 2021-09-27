@@ -12,7 +12,7 @@ teamList = []
 noOfGames = 0
 realScore = []
 
-event = "2020cala"
+event = "2021catt"
 url = "https://www.thebluealliance.com/api/v3/event/" + event  + "/matches?X-TBA-Auth-Key=VPexr6soymZP0UMtFw2qZ11pLWcaDSxCMUYOfMuRj5CQT3bzoExsUGHuO1JvyCyU"
 data2 = requests.get(url)
 data = data2.json()

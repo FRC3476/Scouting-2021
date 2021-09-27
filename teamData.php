@@ -323,6 +323,25 @@ include("navBar.php"); ?>
 							</table>
 
 						</div>
+						<a>
+							<h3><b><u>D Statistics:</u></b></h3>
+						</a>
+						<div class="table-responsive">
+							<table class="table">
+								<tbody>
+									<tr class="danger">
+										<td>Total Times Defense Played</td>
+										<td><?php echo (getTotalDefense($teamNumber)); ?></td>
+									</tr>
+									<tr class="info">
+										<td>Average Defense Rank</td>
+										<td><?php echo (getAvgDefenseRank($teamNumber)); ?></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+
 					</div>
 					<div class="col-md-4">
 						<a>
@@ -586,19 +605,6 @@ include("navBar.php"); ?>
 									</tr>
 
 
-								</tbody>
-							</table>
-						</div>
-						<a>
-							<h3><b><u>D Statistics:</u></b></h3>
-						</a>
-						<div class="table-responsive">
-							<table class="table">
-								<tbody>
-									<tr class="danger">
-										<td>Total Times Defense Played</td>
-										<td><?php echo (getTotalDefense($teamNumber)); ?></td>
-									</tr>
 								</tbody>
 							</table>
 						</div>

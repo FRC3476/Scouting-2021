@@ -1263,7 +1263,7 @@ function getAuto($teamNumber)
 {
 	$auto = getTotalAuto($teamNumber);
 	if ($auto == 0){
-		return "No";
+		return "No/Haven't done Yet";
 	} else{
 		return "Yes";
 	}
@@ -1273,7 +1273,7 @@ function getSideClimbAbility($teamNumber)
 {
 	$climbCount = getTotalClimbSide($teamNumber);
 	if ($climbCount == 0){
-		return "No";
+		return "No/Haven't done Yet";
 	} else{
 		return "Yes";
 	}
@@ -1283,7 +1283,7 @@ function getCenterClimbAbility($teamNumber)
 {
 	$climbCount = getTotalClimbCenter($teamNumber);
 	if ($climbCount == 0){
-		return "No";
+		return "No/Haven't done Yet";
 	} else{
 		return "Yes";
 	}
@@ -1293,7 +1293,7 @@ function getClimbAbility($teamNumber)
 {
 	$climbCount = getTotalClimbCenter($teamNumber) + getTotalClimbSide($teamNumber);
 	if ($climbCount == 0){
-		return "No";
+		return "No/Haven't done Yet";
 	} else{
 		return "Yes";
 	}
@@ -1677,7 +1677,7 @@ function getControlPanelPosition($teamNumber)
 	$positionCount = getTotalControlPosition($teamNumber);
 
 	if ($positionCount == 0){
-		return "No";
+		return "No/Haven't done Yet";
 	} else{
 		return "Yes";
 	}
@@ -1690,7 +1690,7 @@ function getControlPanelNumber($teamNumber)
 	$rotationCount  = getTotalControlNumber($teamNumber);
 
 	if ($rotationCount == 0){
-		return "No";
+		return "No/Haven't done Yet";
 	} else{
 		return "Yes";
 	}
@@ -1814,10 +1814,46 @@ function getThreePointNew($teamNumber)
 	}
 }
 
+function getThreePointNewTeam($teamNumber)
+{
+
+	$csvFile = file('ThreeOPR.txt');
+    $data = array();
+    foreach ($csvFile as $line) {
+        $data[] = str_getcsv($line);
+    }
+
+	for($x = 0; $x < sizeof($data); $x++){
+		$word = $data[$x][0];
+		$word = substr($word, 3);
+		if ($word == $teamNumber){
+			return round($data[$x][1],2);
+		}
+	}
+}
+
 function getUpperTotal($teamNumber)
 {
 	$command = escapeshellcmd('python3 uppercalcufinal.py');
 	$output = shell_exec($command);
+
+	$csvFile = file('upperOPR.txt');
+    $data = array();
+    foreach ($csvFile as $line) {
+        $data[] = str_getcsv($line);
+    }
+
+	for($x = 0; $x < sizeof($data); $x++){
+		$word = $data[$x][0];
+		$word = substr($word, 3);
+		if ($word == $teamNumber){
+			return round($data[$x][1],2);
+		}
+	}
+}
+
+function getUpperTotalTeam($teamNumber)
+{
 
 	$csvFile = file('upperOPR.txt');
     $data = array();
@@ -1839,6 +1875,22 @@ function getOPR($teamNumber)
 	$command = escapeshellcmd('python3 oprcalcufinal.py');
 	$output = shell_exec($command);
 
+	$csvFile = file('OPR.txt');
+    $data = array();
+    foreach ($csvFile as $line) {
+        $data[] = str_getcsv($line);
+    }
+
+	for($x = 0; $x < sizeof($data); $x++){
+		$word = $data[$x][0];
+		$word = substr($word, 3);
+		if ($word == $teamNumber){
+			return round($data[$x][1],2);
+		}
+	}
+}
+
+function getOPRTeam($teamNumber){
 	$csvFile = file('OPR.txt');
     $data = array();
     foreach ($csvFile as $line) {

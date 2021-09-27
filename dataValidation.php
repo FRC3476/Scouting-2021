@@ -31,7 +31,7 @@ include("header.php")?>
          $totalredAutoLower = 0;
          $totalredTeleopLower = 0;
          $climbred = 0;
-         $match = "2020cala_qm" .$_GET["match"];
+         $match = "2021catt_qm" .$_GET["match"];
 
         echo('<div><table  class="table table-hover" id="RawData" border="1"></div>');
         foreach ($result as $row_key => $row){
@@ -152,7 +152,7 @@ include("header.php")?>
                  $totalredAutoLower = 0;
                  $totalredTeleopLower = 0;
                  $climbred = 0;
-                 $match = "2020cala_qm" .$_GET["match"];
+                 $match = "2021catt_qm" .$_GET["match"];
             echo('<div><table  class="table table-hover" id="RawData" border="1"></div>');
             foreach ($result as $row_key => $row){
                     if($i==0){
@@ -259,7 +259,7 @@ include("header.php")?>
                  echo("</table>");
                 }
 
-                  $match = "2020cala_qm" .$_GET["match"];
+                  $match = "2021catt_qm" .$_GET["match"];
 
                   if (getCorrectData($match, "red", "teleopCellsUpper") == $totalredTeleopUpper){
 

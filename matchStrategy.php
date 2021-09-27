@@ -147,7 +147,6 @@ include("navBar.php"); ?>
 							</div>
 						</div>
 						<button class=" btn btn-material-purple">Auto Upper</button>
-						<button class=" btn btn-material-blue">Auto Upper Miss</button>
 						<button class=" btn btn-material-green">Teleop Upper</button>
 						<button class=" btn btn-material-yellow">Teleop Upper Miss</button>
 						<button class=" btn btn-material-red">Total Lower</button>
@@ -176,17 +175,6 @@ include("navBar.php"); ?>
 										pointHighlightFill: "#fff",
 										pointHighlightStroke: "rgba(220,220,220,1)",
 										data: <?php echo (json_encode(getAutoUpperGoal($teamNumber))); ?>
-									},
-
-									{
-										label: "Auto Upper Goal Miss",
-										fillColor: "rgba(220,220,220,0.1)",
-										strokeColor: "blue",
-										pointColor: "rgba(16, 212, 222,1)",
-										pointStrokeColor: "#ffff00",
-										pointHighlightFill: "#fff",
-										pointHighlightStroke: "rgba(220,220,220,1)",
-										data: <?php echo (json_encode((getAutoUpperGoalMiss($teamNumber)))); ?>
 									},
 
 									{
@@ -672,11 +660,11 @@ include("navBar.php"); ?>
 								<tbody>
 									<tr class="info">
 										<td>Average Predicted Score</td>
-										<td><?php echo (getAvgScore($teamNumber)); ?></td>
+										<td><?php echo (round(getAvgScore($teamNumber),4)); ?></td>
 									</tr>
 									<tr class="danger">
 										<td>Average Cycle Count</td>
-										<td><?php echo (getAvgCycleCount($teamNumber)); ?></td>
+										<td><?php echo (round(getAvgCycleCount($teamNumber),3)); ?></td>
 									</tr>
 									<tr class="success">
 										<td>Side Climb Capability?</td>
@@ -706,27 +694,12 @@ include("navBar.php"); ?>
 
 									<tr class="success">
 										<td>Avg Drive Ranking</td>
-										<td><?php echo (getAvgDriveRank($teamNumber)); ?></td>
+										<td><?php echo (round(getAvgDriveRank($teamNumber),3)); ?></td>
 									</tr>
 
 									<tr class="info">
 										<td>Total Defense</td>
 										<td><?php echo (getTotalDefense($teamNumber)); ?></td>
-									</tr>
-									
-									<tr class="danger">
-										<td>Defense Comments</td>
-										<td><?php $dc = defenseComments($teamNumber);
-											for ($i = 0; $i != sizeof($dc); $i++) {
-												echo ("$dc[$i].") . PHP_EOL;
-											} ?></td>
-									</tr>
-									<tr class="success">
-										<td>Match Strategy Comments</td>
-										<td><?php $mc = matchComments($teamNumber);
-											for ($i = 0; $i != sizeof($mc); $i++) {
-												echo ("$mc[$i].") . PHP_EOL;
-											} ?></td>
 									</tr>
 
 								</tbody>

@@ -83,19 +83,19 @@ include("header.php") ?>
 					<th>" . $threePoint . "</th>
 					<th>" . $upperGoal . "</th>
 					<th>" . $shotPercentage . "</th>
-					<th>" . $avgDriveRank . "</th>
-					<th>" . $avgOffenseRank . "</th>
-					<th>" . $avgDefenseRank . "</th>
-					<th>" . $avgTeleopUpper . "</th>
-					<th>" . $avgTeleopLower . "</th>
-					<th>" . $avgTeleopUpperMiss . "</th>
-					<th>" . $avgAutoUpper . "</th>
-					<th>" . $avgAutoLower . "</th>
+					<th>" . round($avgDriveRank,3) . "</th>
+					<th>" . round($avgOffenseRank,3) . "</th>
+					<th>" . round($avgDefenseRank,3) . "</th>
+					<th>" . round($avgTeleopUpper,3) . "</th>
+					<th>" . round($avgTeleopLower,3) . "</th>
+					<th>" . round($avgTeleopUpperMiss,3) . "</th>
+					<th>" . round($avgAutoUpper,3) . "</th>
+					<th>" . round($avgAutoLower,3) . "</th>
 					<th>" . $maxTeleopUpper . "</th>
 					<th>" . $maxTeleopLower . "</th>
 					<th>" . $maxAutoUpper . "</th>
 					<th>" . $maxAutoLower . "</th>
-					<th>" . $avgClimb . "</th>
+					<th>" . round($avgClimb,3) . "</th>
 					<th>" . $centerClimb . "</th>
 					<th>" . $sideClimb . "</th>
 					<th>" . $totalDefense . "</th>
