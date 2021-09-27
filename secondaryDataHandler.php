@@ -63,7 +63,7 @@ if (isset($_POST['matchNum'])) {
 	function getSecondaryMatchData() {
 		$.ajax({
 			type: "POST",
-			url: "daffythescout/secondaryDataHandler.php?matchData:",
+			url: "beckythescout/secondaryDataHandler.php?matchData:",
 			data: JSON.stringify(nums),
 			success: success,
 		});

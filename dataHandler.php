@@ -83,7 +83,7 @@ if (isset($_POST['matchNum'])) {
 	function getMatchData() {
 		$.ajax({
 			type: "POST",
-			url: "daffythescout/dataHandler.php?matchData:",
+			url: "beckythescout/dataHandler.php?matchData:",
 			data: JSON.stringify(nums),
 			success: success,
 		});

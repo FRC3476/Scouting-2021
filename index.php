@@ -10,7 +10,7 @@ include('navBar.php');
     }
 
     .intro-1 {
-        background: url("daffy.png")no-repeat center center;
+        background: url("becky.png")no-repeat center center;
         background-size: cover;
     }
 

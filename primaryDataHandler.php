@@ -58,7 +58,7 @@ if (isset($_POST['matchNum'])) {
     function getPrimaryMatchData() {
         $.ajax({
             type: "POST",
-            url: "daffythescout/primaryDataHandler.php?matchData:",
+            url: "beckythescout/primaryDataHandler.php?matchData:",
             data: JSON.stringify(nums),
             success: success,
         });
