@@ -127,12 +127,13 @@ include("navBar.php"); ?>
 								</a>
 							</div>
 						</div>
-						<button class=" btn btn-material-purple">Auto Upper</button>
-						<button class=" btn btn-material-green">Teleop Upper</button>
-						<button class=" btn btn-material-blue">Upper Shot Percentage</button>
-						<button class=" btn btn-material-red">Total Lower</button>
+						<button class=" btn btn-material-purple">Auto Upper Made</button>
+						<button class=" btn btn-material-brown"> Auto Upper Attempted</button>
+						<button class=" btn btn-material-green">Teleop Upper Made</button>
+						<button class=" btn btn-material-yellow">Teleop Upper Attempted</button>
+						<button class=" btn btn-material-blue">Cycle Count</button>
+						<button class=" btn btn-material-red">Total Lower Made</button>
 						<button class=" btn btn-material-orange">Climb</button>
-						<button class=" btn btn-material-brown"> Predicted Team Score Contribution</button>
 
 
 
@@ -159,10 +160,21 @@ include("navBar.php"); ?>
 									},
 
 									{
+										label: "Auto Upper Attempted",
+										fillColor: "rgba(220,220,220,0.1)",
+										strokeColor: "brown",
+										pointColor: "rgba(107, 75, 26,1)",
+										pointStrokeColor: "#ffff00",
+										pointHighlightFill: "#fff",
+										pointHighlightStroke: "rgba(220,220,220,1)",
+										data: <?php echo (json_encode(getAutoUpperGoalMiss($teamNumber)) + (getAutoUpperGoal($teamNumber))); ?>
+									},
+
+									{
 										label: "Teleop Upper Goal",
 										fillColor: "rgba(220,220,220,0.1)",
 										strokeColor: "green",
-										pointColor: "rgba(42, 187, 155, 1)",
+										pointColor: "rgba(16, 224, 19,1)",
 										pointStrokeColor: "#ffff00",
 										pointHighlightFill: "#fff",
 										pointHighlightStroke: "rgba(220,220,220,1)",
@@ -170,33 +182,32 @@ include("navBar.php"); ?>
 									},
 
 									{
-										label: "Upper Shot Percentage",
+										label: "Teleop Total Upper Attempted",
+										fillColor: "rgba(220,220,220,0.1)",
+										strokeColor: "yellow",
+										pointColor: "rgba(215,222,16,1)",
+										pointStrokeColor: "#ffff00",
+										pointHighlightFill: "#fff",
+										pointHighlightStroke: "rgba(220,220,220,1)",
+										data: <?php echo (json_encode((getTeleopUpperGoalMiss($teamNumber)) + (getTeleopUpperGoal($teamNumber)))); ?>
+									},
+
+									{
+										label: "Cycle Count",
 										fillColor: "rgba(220,220,220,0.1)",
 										strokeColor: "blue",
 										pointColor: "rgba(44, 130, 201, 1)",
 										pointStrokeColor: "#ffff00",
 										pointHighlightFill: "#fff",
 										pointHighlightStroke: "rgba(220,220,220,1)",
-										data: <?php echo (json_encode(getUpperShotPercentage($teamNumber))); ?>
-									},
-
-
-									{
-										label: "Climb",
-										fillColor: "rgba(220,220,220,0.1)",
-										strokeColor: "orange",
-										pointColor: "rgba(245, 171, 53, 1)",
-										pointStrokeColor: "#ffff00",
-										pointHighlightFill: "#fff",
-										pointHighlightStroke: "rgba(220,220,220,1)",
-										data: <?php echo (json_encode(getClimb($teamNumber))); ?>
+										data: <?php echo (json_encode(getCycle($teamNumber))); ?>
 									},
 
 									{
 										label: "Total Lower Goal",
 										fillColor: "rgba(220,220,220,0.1)",
 										strokeColor: "red",
-										pointColor: "rgba(240, 52, 52, 1)",
+										pointColor: "rgba(219, 20, 20,1)",
 										pointStrokeColor: "#ffff00",
 										pointHighlightFill: "#fff",
 										pointHighlightStroke: "rgba(220,220,220,1)",
@@ -204,14 +215,14 @@ include("navBar.php"); ?>
 									},
 
 									{
-										label: "Predicted Team Score Contribution",
+										label: "Climb",
 										fillColor: "rgba(220,220,220,0.1)",
-										strokeColor: "brown",
-										pointColor: "rgba(139,69,19,1)",
+										strokeColor: "orange",
+										pointColor: "rgba(222, 137, 18,1)",
 										pointStrokeColor: "#ffff00",
 										pointHighlightFill: "#fff",
 										pointHighlightStroke: "rgba(220,220,220,1)",
-										data: <?php echo (json_encode(getScore($teamNumber))); ?>
+										data: <?php echo (json_encode(getClimb($teamNumber))); ?>
 									},
 
 								]

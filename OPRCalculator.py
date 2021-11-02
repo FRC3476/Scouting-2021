@@ -14,8 +14,7 @@ def main(key):
 	noOfGames = 0
 	realScore = []
 
-	event = "2021cc"
-	url = "https://www.thebluealliance.com/api/v3/event/" + event  + "/matches?X-TBA-Auth-Key=VPexr6soymZP0UMtFw2qZ11pLWcaDSxCMUYOfMuRj5CQT3bzoExsUGHuO1JvyCyU"
+	url = "https://www.thebluealliance.com/api/v3/event/" + key  + "/matches?X-TBA-Auth-Key=VPexr6soymZP0UMtFw2qZ11pLWcaDSxCMUYOfMuRj5CQT3bzoExsUGHuO1JvyCyU"
 	data2 = requests.get(url)
 	data = data2.json()
 	length = len(data)

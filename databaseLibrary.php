@@ -853,6 +853,28 @@ function getTeleopUpperGoalMiss($teamNumber)
 	return ($out);
 }
 
+
+function getCycle($teamNumber)
+{
+	$teamData = getTeamData($teamNumber);
+	$matchN = matchNum($teamNumber);
+	$cubeGraphT = array();
+	if ($teamData[8] != null){
+		for ($i = 0; $i != sizeof($teamData[8]); $i++) {
+			$cubeGraphT[$teamData[8][$i][2]] = $teamData[8][$i][27];
+		}
+	} else{
+		for ($i = 0; $i != sizeof($teamData[9]); $i++) {
+			$cubeGraphT[$teamData[10][$i][2]] = $teamData[9][$i][18];
+		}
+	}
+	$out = array();
+	for ($i = 0; $i != sizeof($matchN); $i++) {
+		array_push($out, $cubeGraphT[$matchN[$i]]);
+	}
+	return ($out);
+}
+
 function getLowerGoal($teamNumber)
 {
 	$teamData = getTeamData($teamNumber);
@@ -1581,18 +1603,20 @@ function getPickList($teamNumber)
 	$matchCount = 0;
 	if ($teamData[8] != null){
 		for ($i = 0; $i != sizeof($teamData[8]); $i++) {
-			$pointCal = ($pointCal + (2 * ($teamData[8][$i][21])));
-			$pointCal = ($pointCal + (2 * ($teamData[8][$i][20])));
+			$pointCal = ($pointCal + (3 * ($teamData[8][$i][21])));
+			$pointCal = ($pointCal + (3 * ($teamData[8][$i][20])));
+
 			$pointCal = ($pointCal + (2 * ($teamData[8][$i][7])));
-			$pointCal = ($pointCal + (1 * ($teamData[8][$i][9])));
+			$pointCal = ($pointCal + (0.5 * ($teamData[8][$i][9])));
+
 			$pointCal = ($pointCal + (1 * ($teamData[8][$i][11])));
-			$pointCal = ($pointCal + (0.5 * ($teamData[8][$i][13])));
-			$pointCal = ($pointCal + (2 * ($teamData[8][$i][15])));
-			$pointCal = ($pointCal + (1 * ($teamData[8][$i][16])));
+			$pointCal = ($pointCal + (0.25 * ($teamData[8][$i][13])));
+
 			$pointCal = ($pointCal - (2 * ($teamData[8][$i][14])));
-			$pointCal = ($pointCal - (1 * ($teamData[8][$i][12])));
+			$pointCal = ($pointCal - (0.33 * ($teamData[8][$i][12])));
 			$pointCal = ($pointCal - (1 * ($teamData[8][$i][10])));
-			$pointCal = ($pointCal - (0.5 * ($teamData[8][$i][8])));
+			$pointCal = ($pointCal - (0.25 * ($teamData[8][$i][8])));
+			$pointCal = ($pointCal - (0.25 * ($teamData[8][$i][26])));
 			$matchCount++;
 		}
 	}else{
@@ -1814,24 +1838,6 @@ function getThreePointNew($teamNumber)
 	}
 }
 
-function getThreePointNewTeam($teamNumber)
-{
-
-	$csvFile = file('ThreeOPR.txt');
-    $data = array();
-    foreach ($csvFile as $line) {
-        $data[] = str_getcsv($line);
-    }
-
-	for($x = 0; $x < sizeof($data); $x++){
-		$word = $data[$x][0];
-		$word = substr($word, 3);
-		if ($word == $teamNumber){
-			return round($data[$x][1],2);
-		}
-	}
-}
-
 function getUpperTotal($teamNumber)
 {
 	$command = escapeshellcmd('python3 uppercalcufinal.py');
@@ -1852,45 +1858,12 @@ function getUpperTotal($teamNumber)
 	}
 }
 
-function getUpperTotalTeam($teamNumber)
-{
-
-	$csvFile = file('upperOPR.txt');
-    $data = array();
-    foreach ($csvFile as $line) {
-        $data[] = str_getcsv($line);
-    }
-
-	for($x = 0; $x < sizeof($data); $x++){
-		$word = $data[$x][0];
-		$word = substr($word, 3);
-		if ($word == $teamNumber){
-			return round($data[$x][1],2);
-		}
-	}
-}
 
 function getOPR($teamNumber)
 {
 	$command = escapeshellcmd('python3 oprcalcufinal.py');
 	$output = shell_exec($command);
 
-	$csvFile = file('OPR.txt');
-    $data = array();
-    foreach ($csvFile as $line) {
-        $data[] = str_getcsv($line);
-    }
-
-	for($x = 0; $x < sizeof($data); $x++){
-		$word = $data[$x][0];
-		$word = substr($word, 3);
-		if ($word == $teamNumber){
-			return round($data[$x][1],2);
-		}
-	}
-}
-
-function getOPRTeam($teamNumber){
 	$csvFile = file('OPR.txt');
     $data = array();
     foreach ($csvFile as $line) {

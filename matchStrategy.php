@@ -146,12 +146,13 @@ include("navBar.php"); ?>
 								</a>
 							</div>
 						</div>
-						<button class=" btn btn-material-purple">Auto Upper</button>
-						<button class=" btn btn-material-green">Teleop Upper</button>
-						<button class=" btn btn-material-yellow">Teleop Upper Miss</button>
-						<button class=" btn btn-material-red">Total Lower</button>
+						<button class=" btn btn-material-purple">Auto Upper Made</button>
+						<button class=" btn btn-material-brown"> Auto Upper Attempted</button>
+						<button class=" btn btn-material-green">Teleop Upper Made</button>
+						<button class=" btn btn-material-yellow">Teleop Upper Attempted</button>
+						<button class=" btn btn-material-blue">Cycle Count</button>
+						<button class=" btn btn-material-red">Total Lower Made</button>
 						<button class=" btn btn-material-orange">Climb</button>
-						<button class=" btn btn-material-brown"> Predicted Team Score Contribution</button>
 
 
 
@@ -178,6 +179,17 @@ include("navBar.php"); ?>
 									},
 
 									{
+										label: "Auto Upper Attempted",
+										fillColor: "rgba(220,220,220,0.1)",
+										strokeColor: "brown",
+										pointColor: "rgba(107, 75, 26,1)",
+										pointStrokeColor: "#ffff00",
+										pointHighlightFill: "#fff",
+										pointHighlightStroke: "rgba(220,220,220,1)",
+										data: <?php echo (json_encode(getAutoUpperGoalMiss($teamNumber)) + (getAutoUpperGoal($teamNumber))); ?>
+									},
+
+									{
 										label: "Teleop Upper Goal",
 										fillColor: "rgba(220,220,220,0.1)",
 										strokeColor: "green",
@@ -189,14 +201,25 @@ include("navBar.php"); ?>
 									},
 
 									{
-										label: "Teleop Upper Goal Miss",
+										label: "Teleop Total Upper Attempted",
 										fillColor: "rgba(220,220,220,0.1)",
 										strokeColor: "yellow",
 										pointColor: "rgba(215,222,16,1)",
 										pointStrokeColor: "#ffff00",
 										pointHighlightFill: "#fff",
 										pointHighlightStroke: "rgba(220,220,220,1)",
-										data: <?php echo (json_encode(getTeleopUpperGoalMiss($teamNumber))); ?>
+										data: <?php echo (json_encode((getTeleopUpperGoalMiss($teamNumber)) + (getTeleopUpperGoal($teamNumber)))); ?>
+									},
+
+									{
+										label: "Cycle Count",
+										fillColor: "rgba(220,220,220,0.1)",
+										strokeColor: "blue",
+										pointColor: "rgba(44, 130, 201, 1)",
+										pointStrokeColor: "#ffff00",
+										pointHighlightFill: "#fff",
+										pointHighlightStroke: "rgba(220,220,220,1)",
+										data: <?php echo (json_encode(getCycle($teamNumber))); ?>
 									},
 
 									{
@@ -219,17 +242,6 @@ include("navBar.php"); ?>
 										pointHighlightFill: "#fff",
 										pointHighlightStroke: "rgba(220,220,220,1)",
 										data: <?php echo (json_encode(getClimb($teamNumber))); ?>
-									},
-
-									{
-										label: "Predicted Team Score Contribution",
-										fillColor: "rgba(220,220,220,0.1)",
-										strokeColor: "brown",
-										pointColor: "rgba(107, 75, 26,1)",
-										pointStrokeColor: "#ffff00",
-										pointHighlightFill: "#fff",
-										pointHighlightStroke: "rgba(220,220,220,1)",
-										data: <?php echo (json_encode(getScore($teamNumber))); ?>
 									},
 
 								]
@@ -659,49 +671,66 @@ include("navBar.php"); ?>
 							<table class="table">
 								<tbody>
 									<tr class="info">
-										<td>Average Predicted Score</td>
+										<td>Avg Predicted Score</td>
 										<td><?php echo (round(getAvgScore($teamNumber),4)); ?></td>
 									</tr>
-									<tr class="danger">
-										<td>Average Cycle Count</td>
+									<tr class="info">
+										<td>Avg Teleop Upper</td>
+										<td><?php echo (round(getAvgUpperGoalT($teamNumber),3)); ?></td>
+									</tr>
+									<tr class="info">
+										<td>Max Teleop Upper</td>
+										<td><?php echo (round(getMaxUpperGoalT($teamNumber),3)); ?></td>
+									</tr>
+									<tr class="info">
+										<td>Avg Cycle Count</td>
 										<td><?php echo (round(getAvgCycleCount($teamNumber),3)); ?></td>
+									</tr>
+									<tr class="info">
+										<td>Avg Offense Rank</td>
+										<td><?php echo (round(getAvgOffenseRank($teamNumber),3)); ?></td>
+									</tr>
+
+									
+									<tr class="success">
+										<td>Avg Auto Upper</td>
+										<td><?php echo (getAvgUpperGoal($teamNumber)); ?></td>
+									</tr>
+									<tr class="success">
+										<td>Max Auto Upper</td>
+										<td><?php echo (getMaxUpperGoal($teamNumber)); ?></td>
 									</tr>
 									<tr class="success">
 										<td>Side Climb Capability?</td>
 										<td><?php echo (getSideClimbAbility($teamNumber)); ?></td>
 									</tr>
-									<tr class="info">
+									<tr class="success">
 										<td>Center Climb Capability?</td>
 										<td><?php echo (getCenterClimbAbility($teamNumber)); ?></td>
 									</tr>
-									<tr class="danger">
-										<td>Auto Capability?</td>
-										<td><?php echo (getAuto($teamNumber)); ?></td>
-									</tr>
 									<tr class="success">
-										<td>Control Panel Position Capability?</td>
-										<td><?php echo (getControlPanelPosition($teamNumber)); ?></td>
+										<td>Avg Climb</td>
+										<td><?php echo (getAvgClimb($teamNumber)); ?></td>
 									</tr>
-									<tr class="info">
-										<td>Control Panel Number Capability?</td>
-										<td><?php echo (getControlPanelNumber($teamNumber)); ?></td>
-									</tr>
+									
 
 									<tr class="danger">
-										<td>Average Penalties</td>
-										<td><?php echo (getAvgPenalties($teamNumber)); ?></td>
-									</tr>
-
-									<tr class="success">
-										<td>Avg Drive Ranking</td>
-										<td><?php echo (round(getAvgDriveRank($teamNumber),3)); ?></td>
-									</tr>
-
-									<tr class="info">
 										<td>Total Defense</td>
 										<td><?php echo (getTotalDefense($teamNumber)); ?></td>
 									</tr>
-
+									<tr class="danger">
+										<td>Avg Defense Rank</td>
+										<td><?php echo (getAvgDefenseRank($teamNumber)); ?></td>
+									</tr>
+									<tr class="danger">
+										<td>Avg Drive Rank</td>
+										<td><?php echo (round(getAvgDriveRank($teamNumber),3)); ?></td>
+									</tr>
+									<tr class="danger">
+										<td>Avg Penalties</td>
+										<td><?php echo (getAvgPenalties($teamNumber)); ?></td>
+									</tr>
+									
 								</tbody>
 							</table>
 
