@@ -1,9 +1,9 @@
 <?php
 	$servername = "localhost:8889";
-	$username = "root";
-	$password = "root";
+	$username = "";
+	$password = "";
 	$dbname = "scouting";
-	$charset = "utf8";
+	$charset = "";
 
 	$pitScoutTable = "20template_pitscout";
 	$matchScoutTable = "20template_matchscout";
